@@ -6,11 +6,12 @@ android:
     - build-tools-25.0.2
     - android-25
     - extra-android-m2repository
+    - sys-img-armeabi-v7a-android-25
   licenses:
     - '.+'
 
 script:
-  - ./gradlew test
+  - ./gradlew build connectedCheck
 
 jdk:
   - oraclejdk8
