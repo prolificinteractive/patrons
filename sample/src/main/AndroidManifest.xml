@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.prolificinteractive.sample"
+    package="com.prolificinteractive.patron.sample"
     >
 
   <application
-      android:name=".MyApplication"
+      android:name="com.prolificinteractive.sample.MyApplication"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"

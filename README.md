@@ -36,32 +36,34 @@ TODO
 
 A default patron exists for all shared preferences types.
 
-```java
-public class MyClass {
-  private BooleanPreference showOnboardingPreference;
-  private StringPreference usernamePreference;
-  private IntPreference delayPreference;
-  
-  void initMyPreferences() {
-    showOnboardingPreference = new BooleanPreference(prefs, "onboarding", false); 
-    usernamePreference = new StringPreference(prefs, "username", "anonymous");
-    catsPreference = new IntPreference(prefs, "cats", 0);
-  }
-  
-  void updateMyPreferences() {
-    showOnboardingPreference.set(true);
-    usernamePreference.set("a pretty name");
-    delayPreference.set(10);
-  }
-  
-  String getUsername() {
-    return usernamePreference.get();
-  }
-  
-  int getCats() {
-    return catsPreference.get();
-  }
-}
+#### Boolean
+```kotlin
+val boolPref: Preference<Boolean> = BooleanPreference(prefs, "key")
+```
+
+#### Float
+```kotlin
+val floatPref: Preference<Float> = FloatPreference(prefs, "key")
+```
+
+#### Integer
+```kotlin
+val intPref: Preference<Integer> = IntPreference(prefs, "key")
+```
+
+#### Long
+```kotlin
+val longPref: Preference<Long> = LongPreference(prefs, "key")
+```
+
+#### String
+```kotlin
+val stringPref: Preference<String> = StringPreference(prefs, "key")
+```
+
+#### String Set
+```kotlin
+val stringSetPref: Preference<Set<String>> = StringSetPreference(prefs, "key")
 ```
 
 ### Conceal
@@ -79,6 +81,35 @@ public class MyApplication extends Application {
   }
 }
 ```
+
+## Encryption
+
+### SharedPreferences Backed Keychain
+
+```kotlin
+val prefs = ConcealSharedPreferences(context)
+```
+
+### Keystore Backed Keychain
+
+By default, preference's key is __NOT__ encrypted but the behaviour can be customized by passing your own custom [KeyEncryption](patron-conceal/src/main/java/com/prolificinteractive/patrons/conceal/KeyEncryption.kt)
+
+```kotlin
+val defaultPref = PreferenceManager.getDefaultSharedPreferences(context)
+val concealedPrefs = ConcealSharedPreferences(
+  this,
+  defaultPref,
+  NoKeyEncryption(),
+  ConcealEncryption(
+    context,
+    "conceal_encryption",
+    AndroidConceal
+      .get()
+      .createDefaultCrypto(KeystoreBackedKeychain(context, defaultPref))
+    )
+)
+```
+
 
 ## Contributing to Patrons
 

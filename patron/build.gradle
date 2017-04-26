@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -28,8 +29,10 @@ android {
 }
 
 dependencies {
-  rootProject.ext.testDep.each { testCompile it }
-  rootProject.ext.androidTestDep.each { androidTestCompile it }
+  implementation rootProject.kotlinStdlib
+
+  rootProject.testDep.each { testImplementation it }
+  rootProject.androidTestDep.each { androidTestImplementation it }
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
