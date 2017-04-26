@@ -28,7 +28,7 @@ public class FloatPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final FloatPreference pref = new FloatPreference(prefs, "float_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));

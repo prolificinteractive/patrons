@@ -32,7 +32,7 @@ public class StringSetPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final StringSetPreference pref = new StringSetPreference(prefs, "string_set_test");
 
     pref.delete();

@@ -38,7 +38,7 @@ public class ConcealIntPreferenceTest {
     factory = new ConcealPreferenceFactory(crypto, prefs);
   }
 
-  @Test public void delete() throws Exception {
+  @Test public void testDelete() throws Exception {
     final ConcealIntPreference pref = factory.create("conceal_int_test", Integer.class);
     pref.delete();
     assertThat(pref.isSet(), is(equalTo(false)));
@@ -49,7 +49,7 @@ public class ConcealIntPreferenceTest {
   }
 
   @Test
-  public void get() throws Exception {
+  public void testGet() throws Exception {
     final ConcealIntPreference pref = factory.create("conceal_int_test2", Integer.class);
     pref.delete();
     assertThat(pref.get(), is(equalTo(0)));

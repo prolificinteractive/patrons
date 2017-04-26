@@ -37,7 +37,7 @@ public class ConcealBooleanPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealBooleanPreference pref =
         new ConcealBooleanPreference(crypto, prefs, "boolean_test");
     pref.delete();

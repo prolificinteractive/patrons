@@ -28,7 +28,7 @@ public class IntPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final IntPreference pref = new IntPreference(prefs, "int_test");
 
     pref.delete();

@@ -43,7 +43,7 @@ public class ConcealStringPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealStringPreference pref = new ConcealStringPreference(crypto, prefs, "string_test");
 
     pref.delete();

@@ -47,7 +47,7 @@ public class ConcealStringSetPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealStringSetPreference pref =
         new ConcealStringSetPreference(crypto, prefs, "string_set_test");
 

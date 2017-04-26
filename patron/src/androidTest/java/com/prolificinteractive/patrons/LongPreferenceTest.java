@@ -28,7 +28,7 @@ public class LongPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final LongPreference pref = new LongPreference(prefs, "long_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));

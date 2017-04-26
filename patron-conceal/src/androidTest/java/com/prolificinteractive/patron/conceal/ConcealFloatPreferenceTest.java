@@ -43,7 +43,7 @@ public class ConcealFloatPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealFloatPreference pref = new ConcealFloatPreference(crypto, prefs, "float_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));

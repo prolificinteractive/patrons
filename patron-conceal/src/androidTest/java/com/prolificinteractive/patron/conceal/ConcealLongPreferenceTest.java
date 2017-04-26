@@ -43,7 +43,7 @@ public class ConcealLongPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealLongPreference pref = new ConcealLongPreference(crypto, prefs, "long_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));

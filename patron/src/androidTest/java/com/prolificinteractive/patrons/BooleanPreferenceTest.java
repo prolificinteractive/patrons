@@ -22,7 +22,7 @@ public class BooleanPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final BooleanPreference pref = new BooleanPreference(prefs, "boolean_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(false)));
