@@ -8,6 +8,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
+import com.facebook.soloader.SoLoader;
 import com.prolificinteractive.patrons.conceal.ConcealStringSetPreference;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,6 +36,8 @@ public class ConcealStringSetPreferenceTest {
   private Crypto crypto;
 
   @Before public void setUp() throws Exception {
+    SoLoader.init(InstrumentationRegistry.getContext(), false);
+
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
     crypto = AndroidConceal
         .get()
