@@ -1,3 +1,6 @@
+# Mac Finder hidden files
+.DS_Store
+
 # Eclipse
 .project
 .classpath

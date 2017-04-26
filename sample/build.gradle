@@ -17,15 +17,27 @@ android {
   }
 
   buildTypes {
+    debug {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+
     release {
-      minifyEnabled false
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
 }
 
 dependencies {
+  compile project(':patron')
   compile project(':patron-conceal')
 
   compile rootProject.ext.supportAppCompat
+
+  androidTestCompile rootProject.ext.supportAnnotations
+
+  rootProject.ext.testDep.each { testCompile it }
+  rootProject.ext.androidTestDep.each { androidTestCompile it }
+
 }

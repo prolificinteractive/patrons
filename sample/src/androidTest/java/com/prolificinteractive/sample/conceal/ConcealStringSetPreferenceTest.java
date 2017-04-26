@@ -1,4 +1,4 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.sample.conceal;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,7 +8,11 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
-import com.prolificinteractive.patrons.conceal.ConcealFloatPreference;
+import com.prolificinteractive.patrons.conceal.ConcealStringSetPreference;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,13 +23,13 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class ConcealFloatPreferenceTest {
+public class ConcealStringSetPreferenceTest {
 
-  private static final float DEFAULT_VALUE = 0;
+  private static final Set<String> DEFAULT_VALUE = null;
 
-  private static final float TEN = 10.0f;
-  private static final float TWENTY = 20.0f;
-  private static final float FORTY_TWO = 42.0f;
+  private static final Set<String> TEN = new HashSet<>(Collections.singletonList("10"));
+  private static final Set<String> TWENTY = new HashSet<>(Arrays.asList("twenty", "20"));
+  private static final Set<String> FORTY_TWO = new HashSet<>(Arrays.asList("forty", "two", "2"));
 
   private SharedPreferences prefs;
   private Crypto crypto;
@@ -41,12 +45,16 @@ public class ConcealFloatPreferenceTest {
   }
 
   @Test public void get() throws Exception {
-    final ConcealFloatPreference pref = new ConcealFloatPreference(crypto, prefs, "float_test");
+    final ConcealStringSetPreference pref =
+        new ConcealStringSetPreference(crypto, prefs, "string_set_test");
+
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));
+
     pref.set(TEN);
     pref.set(TWENTY);
     pref.set(FORTY_TWO);
+
     assertThat(pref.get(), is(equalTo(FORTY_TWO)));
     assertThat(pref.get(), is(not(equalTo(TEN))));
     assertThat(pref.get(), is(not(equalTo(TWENTY))));

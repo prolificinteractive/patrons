@@ -1,4 +1,4 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.sample.conceal;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -8,7 +8,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
-import com.prolificinteractive.patrons.conceal.ConcealFloatPreference;
+import com.prolificinteractive.patrons.conceal.ConcealBooleanPreference;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,13 +19,7 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class ConcealFloatPreferenceTest {
-
-  private static final float DEFAULT_VALUE = 0;
-
-  private static final float TEN = 10.0f;
-  private static final float TWENTY = 20.0f;
-  private static final float FORTY_TWO = 42.0f;
+public class ConcealBooleanPreferenceTest {
 
   private SharedPreferences prefs;
   private Crypto crypto;
@@ -41,14 +35,14 @@ public class ConcealFloatPreferenceTest {
   }
 
   @Test public void get() throws Exception {
-    final ConcealFloatPreference pref = new ConcealFloatPreference(crypto, prefs, "float_test");
+    final ConcealBooleanPreference pref =
+        new ConcealBooleanPreference(crypto, prefs, "boolean_test");
     pref.delete();
-    assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));
-    pref.set(TEN);
-    pref.set(TWENTY);
-    pref.set(FORTY_TWO);
-    assertThat(pref.get(), is(equalTo(FORTY_TWO)));
-    assertThat(pref.get(), is(not(equalTo(TEN))));
-    assertThat(pref.get(), is(not(equalTo(TWENTY))));
+    assertThat(pref.get(), is(equalTo(false)));
+    pref.set(true);
+    pref.set(false);
+    pref.set(true);
+    assertThat(pref.get(), is(equalTo(true)));
+    assertThat(pref.get(), is(not(equalTo(false))));
   }
 }

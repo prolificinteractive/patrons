@@ -1,30 +1,30 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.patrons.conceal;
 
 import android.content.SharedPreferences;
 import com.facebook.crypto.Crypto;
 
-public class ConcealBooleanPreference extends BaseConcealPreference<Boolean> {
+public class ConcealFloatPreference extends BaseConcealPreference<Float> {
 
-  public ConcealBooleanPreference(
+  public ConcealFloatPreference(
       final Crypto crypto,
       final SharedPreferences preferences,
       final String key) {
-    this(crypto, preferences, key, false);
+    this(crypto, preferences, key, 0f);
   }
 
-  public ConcealBooleanPreference(
+  public ConcealFloatPreference(
       final Crypto crypto,
       final SharedPreferences preferences,
       final String key,
-      final boolean defaultValue) {
+      final float defaultValue) {
     super(crypto, preferences, key, defaultValue);
   }
 
-  @Override public Boolean get() {
+  @Override public Float get() {
     final String result = stringPreference.get();
     if (result == null) {
       return defaultValue;
     }
-    return Boolean.parseBoolean(result);
+    return Float.parseFloat(result);
   }
 }

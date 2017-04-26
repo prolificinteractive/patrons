@@ -1,14 +1,10 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.sample.patrons;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import com.facebook.android.crypto.keychain.AndroidConceal;
-import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
-import com.facebook.crypto.Crypto;
-import com.facebook.crypto.CryptoConfig;
-import com.prolificinteractive.patrons.conceal.ConcealFloatPreference;
+import com.prolificinteractive.patrons.FloatPreference;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +15,7 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class ConcealFloatPreferenceTest {
+public class FloatPreferenceTest {
 
   private static final float DEFAULT_VALUE = 0;
 
@@ -28,20 +24,13 @@ public class ConcealFloatPreferenceTest {
   private static final float FORTY_TWO = 42.0f;
 
   private SharedPreferences prefs;
-  private Crypto crypto;
 
   @Before public void setUp() throws Exception {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
-    crypto = AndroidConceal
-        .get()
-        .createDefaultCrypto(new SharedPrefsBackedKeyChain(
-            InstrumentationRegistry.getContext(),
-            CryptoConfig.KEY_256
-        ));
   }
 
   @Test public void get() throws Exception {
-    final ConcealFloatPreference pref = new ConcealFloatPreference(crypto, prefs, "float_test");
+    final FloatPreference pref = new FloatPreference(prefs, "float_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));
     pref.set(TEN);

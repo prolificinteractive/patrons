@@ -1,4 +1,4 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.sample.conceal;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
