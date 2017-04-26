@@ -30,11 +30,14 @@ public class IntPreferenceTest {
 
   @Test public void get() throws Exception {
     final IntPreference pref = new IntPreference(prefs, "int_test");
+
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));
+
     pref.set(ONE);
     pref.set(TWO);
     pref.set(FORTY_TWO);
+
     assertThat(pref.get(), is(equalTo(FORTY_TWO)));
     assertThat(pref.get(), is(not(equalTo(ONE))));
     assertThat(pref.get(), is(not(equalTo(TWO))));
