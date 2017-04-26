@@ -8,6 +8,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
+import com.prolificinteractive.patrons.conceal.ConcealStringSetPreference;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;

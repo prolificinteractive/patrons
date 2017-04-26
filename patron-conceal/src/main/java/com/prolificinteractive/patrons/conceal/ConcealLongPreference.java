@@ -1,4 +1,4 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.patrons.conceal;
 
 import android.content.SharedPreferences;
 import com.facebook.crypto.Crypto;

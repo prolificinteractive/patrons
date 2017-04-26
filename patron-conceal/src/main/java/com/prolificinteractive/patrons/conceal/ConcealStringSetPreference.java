@@ -1,4 +1,4 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.patrons.conceal;
 
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
