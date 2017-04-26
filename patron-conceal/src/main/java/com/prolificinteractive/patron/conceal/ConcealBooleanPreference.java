@@ -3,28 +3,28 @@ package com.prolificinteractive.patron.conceal;
 import android.content.SharedPreferences;
 import com.facebook.crypto.Crypto;
 
-public class ConcealIntPreference extends BaseConcealPreference<Integer> {
+public class ConcealBooleanPreference extends BaseConcealPreference<Boolean> {
 
-  public ConcealIntPreference(
+  public ConcealBooleanPreference(
       final Crypto crypto,
       final SharedPreferences preferences,
       final String key) {
-    this(crypto, preferences, key, 0);
+    this(crypto, preferences, key, false);
   }
 
-  public ConcealIntPreference(
+  public ConcealBooleanPreference(
       final Crypto crypto,
       final SharedPreferences preferences,
       final String key,
-      final int defaultValue) {
+      final boolean defaultValue) {
     super(crypto, preferences, key, defaultValue);
   }
 
-  @Override public Integer get() {
+  @Override public Boolean get() {
     final String result = stringPreference.get();
     if (result == null) {
       return defaultValue;
     }
-    return Integer.parseInt(result);
+    return Boolean.parseBoolean(result);
   }
 }

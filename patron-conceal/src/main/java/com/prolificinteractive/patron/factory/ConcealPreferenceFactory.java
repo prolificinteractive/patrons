@@ -1,7 +1,9 @@
-package com.prolificinteractive.patron.conceal;
+package com.prolificinteractive.patron.factory;
 
 import android.content.SharedPreferences;
 import com.facebook.crypto.Crypto;
+import com.prolificinteractive.patron.conceal.ConcealIntPreference;
+import com.prolificinteractive.patron.conceal.ConcealStringPreference;
 import com.prolificinteractive.patrons.Preference;
 
 public class ConcealPreferenceFactory {

@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
  */
 public class LongPreference extends BasePreference<Long> {
   public LongPreference(final SharedPreferences preferences, final String key) {
-    this(preferences, key, 0);
+    this(preferences, key, 0L);
   }
 
   public LongPreference(

@@ -7,6 +7,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
+import com.prolificinteractive.patron.factory.ConcealPreferenceFactory;
 import org.junit.Before;
 import org.junit.Test;
 
