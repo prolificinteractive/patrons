@@ -11,7 +11,7 @@ android:
     - '.+'
 
 script:
-  - ./gradlew build connectedCheck
+  - ./gradlew build connectedCheck -x lint
 
 jdk:
   - oraclejdk8
