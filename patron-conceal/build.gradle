@@ -28,5 +28,3 @@ dependencies {
   rootProject.ext.testDep.each { testCompile it }
   rootProject.ext.androidTestDep.each { androidTestCompile it }
 }
-
-ext.artifactId = 'patrons-conceal'
