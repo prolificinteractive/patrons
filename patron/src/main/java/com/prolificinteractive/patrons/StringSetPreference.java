@@ -6,7 +6,7 @@ import android.os.Build;
 import java.util.Set;
 
 /**
- * Preference wrapper for {@link Set<String>}.
+ * Preference wrapper for {@link Set} of {@link String}.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class StringSetPreference extends BasePreference<Set<String>> {
