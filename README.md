@@ -1,5 +1,5 @@
 # Patrons
-[![Travis build status](https://img.shields.io/travis/prolificinteractive/patrons.svg?style=flat-square)](https://travis-ci.org/prolificinteractive/patrons)
+[![Travis branch](https://img.shields.io/travis/prolificinteractive/Patrons/master.svg)](https://travis-ci.org/prolificinteractive/Patrons)[![Maven Central](https://img.shields.io/maven-central/v/com.prolificinteractive/patrons.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22patrons%22)
 
 _Let your patron do the work._
 
@@ -60,6 +60,22 @@ public class MyClass {
   
   int getCats() {
     return catsPreference.get();
+  }
+}
+```
+
+### Conceal
+
+Init Conceal in your application class:
+
+```java
+import com.facebook.soloader.SoLoader;
+
+public class MyApplication extends Application {
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, false);
   }
 }
 ```

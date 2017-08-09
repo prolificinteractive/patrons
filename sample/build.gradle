@@ -18,25 +18,27 @@ android {
 
   buildTypes {
     debug {
-      minifyEnabled true
+      minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 
     release {
-      minifyEnabled true
+      minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
 }
 
 dependencies {
-  compile project(':patron')
-  compile project(':patron-conceal')
+  def supportVersion = '26.0.1'
 
-  compile rootProject.ext.supportAppCompat
+  implementation project(':patron')
+  implementation project(':patron-conceal')
 
-  androidTestCompile rootProject.ext.supportAnnotations
+  implementation "com.android.support:appcompat-v7:$supportVersion"
 
-  rootProject.ext.testDep.each { testCompile it }
-  rootProject.ext.androidTestDep.each { androidTestCompile it }
+  androidTestImplementation "com.android.support:support-annotations:$supportVersion"
+
+  rootProject.ext.testDep.each { testImplementation it }
+  rootProject.ext.androidTestDep.each { androidTestImplementation it }
 }
