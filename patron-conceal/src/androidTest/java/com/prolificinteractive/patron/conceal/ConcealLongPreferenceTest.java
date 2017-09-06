@@ -8,6 +8,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
+import com.facebook.soloader.SoLoader;
 import com.prolificinteractive.patrons.conceal.ConcealLongPreference;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +32,8 @@ public class ConcealLongPreferenceTest {
   private Crypto crypto;
 
   @Before public void setUp() throws Exception {
+    SoLoader.init(InstrumentationRegistry.getContext(), false);
+
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
     crypto = AndroidConceal
         .get()
@@ -40,7 +43,7 @@ public class ConcealLongPreferenceTest {
         ));
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final ConcealLongPreference pref = new ConcealLongPreference(crypto, prefs, "long_test");
     pref.delete();
     assertThat(pref.get(), is(equalTo(DEFAULT_VALUE)));

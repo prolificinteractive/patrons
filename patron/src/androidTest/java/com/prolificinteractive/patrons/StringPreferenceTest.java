@@ -28,7 +28,7 @@ public class StringPreferenceTest {
     prefs = PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
   }
 
-  @Test public void get() throws Exception {
+  @Test public void testGet() throws Exception {
     final StringPreference pref = new StringPreference(prefs, "string_test");
 
     pref.delete();

@@ -7,6 +7,7 @@ import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.Crypto;
 import com.facebook.crypto.CryptoConfig;
+import com.facebook.soloader.SoLoader;
 import com.prolificinteractive.patrons.conceal.ConcealIntPreference;
 import com.prolificinteractive.patrons.factory.ConcealPreferenceFactory;
 import org.junit.Before;
@@ -22,6 +23,9 @@ public class ConcealIntPreferenceTest {
   private ConcealPreferenceFactory factory;
 
   @Before public void setUp() throws Exception {
+    SoLoader.init(InstrumentationRegistry.getContext(), false);
+
+
     final SharedPreferences prefs =
         PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getContext());
     final Crypto crypto = AndroidConceal
@@ -34,7 +38,7 @@ public class ConcealIntPreferenceTest {
     factory = new ConcealPreferenceFactory(crypto, prefs);
   }
 
-  @Test public void delete() throws Exception {
+  @Test public void testDelete() throws Exception {
     final ConcealIntPreference pref = factory.create("conceal_int_test", Integer.class);
     pref.delete();
     assertThat(pref.isSet(), is(equalTo(false)));
@@ -45,7 +49,7 @@ public class ConcealIntPreferenceTest {
   }
 
   @Test
-  public void get() throws Exception {
+  public void testGet() throws Exception {
     final ConcealIntPreference pref = factory.create("conceal_int_test2", Integer.class);
     pref.delete();
     assertThat(pref.get(), is(equalTo(0)));
