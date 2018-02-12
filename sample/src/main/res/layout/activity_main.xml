@@ -19,7 +19,7 @@
       android:text="Extract"
       />
   <TextView
-      android:id="@+id/display"
+      android:id="@+id/random"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="16dp"

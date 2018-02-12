@@ -1,16 +1,27 @@
 ext {
   minSdkVersion = 14
-  compileSdkVersion = 26
-  targetSdkVersion = 26
-  buildToolsVersion = '26.0.1'
+  compileSdkVersion = 27
+  targetSdkVersion = 27
+  buildToolsVersion = '27.0.2'
+  gradleVersion = '3.0.1'
+  kotlinVersion = '1.2.21'
 
   hamcrestVersion = '1.3'
   junitVersion = '4.11'
-  runnerVersion = '0.5'
   robolectricVersion = '3.4.2'
+  runnerVersion = '1.0.1'
+  supportVersion = '27.0.2'
+
+  supportV4 = "com.android.support:support-v4:$supportVersion"
+  supportDesign = "com.android.support:design:$supportVersion"
+  supportAnnotations = "com.android.support:support-annotations:$supportVersion"
+  supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
 
   // Security
-  conceal = 'com.facebook.conceal:conceal:2.0.1@aar'
+  conceal = 'com.facebook.conceal:conceal:2.0.2@aar'
+
+  // Kotlin
+  kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlinVersion"
 
   // Test
   junit = "junit:junit:$junitVersion"
