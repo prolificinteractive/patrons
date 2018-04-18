@@ -1,5 +1,6 @@
 # Patrons
-[![Travis branch](https://img.shields.io/travis/prolificinteractive/Patrons/master.svg)](https://travis-ci.org/prolificinteractive/Patrons)[![Maven Central](https://img.shields.io/maven-central/v/com.prolificinteractive/patrons.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22patrons%22)
+[![Travis branch](https://img.shields.io/travis/prolificinteractive/Patrons/master.svg)](https://travis-ci.org/prolificinteractive/Patrons) ![JitPack](https://img.shields.io/jitpack/v/prolificinteractive/patrons.svg)
+
 
 _Let your patron do the work._
 
@@ -22,15 +23,11 @@ Patrons also provide an encrypted version of the shared preferences. Use `patron
 ## Installation
 
 ```gradle
-compile 'com.prolificinteractive:patrons:0.1.0'
+implementation 'com.github.prolificinteractive:patrons:0.2.0'
 
 // If you want patrons with encryption of your shared preferences
-compile 'com.prolificinteractive:patrons-conceal:0.1.0'
+implementation 'com.github.prolificinteractive:patrons-conceal:0.2.0'
 ```
-
-### Proguard
-
-TODO
 
 ## Usage
 
@@ -110,6 +107,9 @@ val concealedPrefs = ConcealSharedPreferences(
 )
 ```
 
+### Proguard
+
+TODO
 
 ## Contributing to Patrons
 
@@ -121,7 +121,7 @@ If you wish to contribute to the project, fork this repo and submit a pull reque
 
 ![prolific](https://s3.amazonaws.com/prolificsitestaging/logos/Prolific_Logo_Full_Color.png)
 
-Copyright (c) 2017 Prolific Interactive
+Copyright (c) 2018 Prolific Interactive
 
 Patrons is maintained and sponsored by Prolific Interactive. It may be redistributed under the terms specified in the [LICENSE] file.
 
