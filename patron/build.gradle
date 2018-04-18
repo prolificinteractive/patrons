@@ -34,5 +34,3 @@ dependencies {
   rootProject.testDep.each { testImplementation it }
   rootProject.androidTestDep.each { androidTestImplementation it }
 }
-
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
