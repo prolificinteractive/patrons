@@ -1,5 +1,6 @@
 # Patrons
-[![Travis branch](https://img.shields.io/travis/prolificinteractive/Patrons/master.svg)](https://travis-ci.org/prolificinteractive/Patrons) ![JitPack](https://img.shields.io/jitpack/v/prolificinteractive/patrons.svg)
+[![Travis branch](https://img.shields.io/travis/prolificinteractive/patrons/master.svg)](https://travis-ci.org/prolificinteractive/patrons) [![](https://jitpack.io/v/prolificinteractive/patrons.svg)](https://jitpack.io/#prolificinteractive/patrons)
+
 
 
 _Let your patron do the work._
@@ -22,11 +23,26 @@ Patrons also provide an encrypted version of the shared preferences. Use `patron
 
 ## Installation
 
-```gradle
-implementation 'com.github.prolificinteractive:patrons:0.2.0'
+Step 1. Add the JitPack repository to your build file
 
-// If you want patrons with encryption of your shared preferences
-implementation 'com.github.prolificinteractive:patrons-conceal:0.2.0'
+```groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+```
+
+Step 2. Add the dependency
+
+```groovy
+dependencies {
+  implementation 'com.github.prolificinteractive:patrons:${patronsVersion}'
+
+  // If you want patrons with encryption of your shared preferences
+  implementation 'com.github.prolificinteractive:patrons-conceal:${patronsVersion}'
+}
 ```
 
 ## Usage
