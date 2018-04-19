@@ -38,10 +38,10 @@ Step 2. Add the dependency
 
 ```groovy
 dependencies {
-  implementation 'com.github.prolificinteractive:patrons:${patronsVersion}'
+  implementation 'com.github.prolificinteractive.patrons:patron:${patronsVersion}'
 
   // If you want patrons with encryption of your shared preferences
-  implementation 'com.github.prolificinteractive:patrons-conceal:${patronsVersion}'
+  implementation 'com.github.prolificinteractive.patrons:patron-conceal:${patronsVersion}'
 }
 ```
 
