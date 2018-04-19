@@ -1,4 +1,4 @@
 jdk:
   - oraclejdk8
 install:
-  - ./gradlew uploadArchives -c settings-local.gradle
+  - ./gradlew clean install -c settings-local.gradle
