@@ -32,4 +32,23 @@ interface Preference<T> {
    * @param value the value set
    */
   fun set(value: T?)
+
+  /**
+   * Register a change listener on the shared preference.
+   *
+   * @param listener the change listener
+   */
+  fun registerChangeListener(listener: OnPreferenceChangeListener<T?>)
+
+  /**
+   * Unregister a change listener on shared preference.
+   *
+   * @param listener the change listener
+   */
+  fun unregisterChangeListener(listener: OnPreferenceChangeListener<T?>)
+
+  /**
+   * Unregister all change listeners on shared preference.
+   */
+  fun unregisterAllChangeListener()
 }

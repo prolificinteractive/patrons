@@ -1,6 +1,7 @@
 package com.prolificinteractive.patrons
 
 import android.content.SharedPreferences
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 
 /**
  * The type Base preference.
@@ -29,6 +30,26 @@ abstract class BasePreference<T>(
     protected val defaultValue: T
 ) : Preference<T> {
 
+  private val listeners: MutableMap<OnPreferenceChangeListener<T?>, OnSharedPreferenceChangeListener> = mutableMapOf()
+
   override fun delete() = preferences.edit().remove(key).apply()
+
   override fun isSet() = preferences.contains(key)
+
+  override fun registerChangeListener(listener: OnPreferenceChangeListener<T?>) {
+    val l = OnSharedPreferenceChangeListener { _, _ -> listener(get()) }
+    preferences.registerOnSharedPreferenceChangeListener(l)
+    listeners[listener] = l
+  }
+
+  override fun unregisterChangeListener(listener: OnPreferenceChangeListener<T?>) {
+    val l = listeners[listener]
+    preferences.unregisterOnSharedPreferenceChangeListener(l)
+    listeners.remove(listener)
+  }
+
+  override fun unregisterAllChangeListener() {
+    listeners.forEach { preferences.unregisterOnSharedPreferenceChangeListener(it.value) }
+    listeners.clear()
+  }
 }
