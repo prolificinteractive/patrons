@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import com.facebook.android.crypto.keychain.AndroidConceal
 import com.prolificinteractive.patrons.IntPreference
+import com.prolificinteractive.patrons.OnPreferenceChangeListener
 import com.prolificinteractive.patrons.Preference
 import com.prolificinteractive.patrons.StringPreference
 import com.prolificinteractive.patrons.conceal.ConcealEncryption
