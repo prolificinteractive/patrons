@@ -4,20 +4,24 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.TextView
 import com.facebook.android.crypto.keychain.AndroidConceal
 import com.prolificinteractive.patrons.IntPreference
-import com.prolificinteractive.patrons.OnPreferenceChangeListener
 import com.prolificinteractive.patrons.Preference
 import com.prolificinteractive.patrons.StringPreference
 import com.prolificinteractive.patrons.conceal.ConcealEncryption
 import com.prolificinteractive.patrons.conceal.ConcealSharedPreferences
 import com.prolificinteractive.patrons.conceal.KeystoreBackedKeychain
 import com.prolificinteractive.patrons.conceal.NoKeyEncryption
+import kotlinx.android.synthetic.main.activity_main.encrypted
+import kotlinx.android.synthetic.main.activity_main.extract
+import kotlinx.android.synthetic.main.activity_main.random
+import kotlinx.android.synthetic.main.activity_main.save
 import java.util.Random
 
 class MainActivity : AppCompatActivity() {
+  companion object {
+    private val r = Random(50)
+  }
 
   private lateinit var randomPref: Preference<Int?>
   private lateinit var encryptedPref: Preference<String?>
@@ -27,18 +31,13 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     val defaultPref = PreferenceManager.getDefaultSharedPreferences(this)
-    //final ConcealSharedPreferences prefs = new ConcealSharedPreferences(this);
 
     // Use this block to use KeyStore backed shared conceal shared preferences.
     val prefs = getKeystoreBackedConcealSharedPreferences(defaultPref)
+    // val prefs = getDefaultConcealSharedPreferences()
 
     encryptedPref = StringPreference(defaultPref, "random")
     randomPref = IntPreference(prefs, "random")
-
-    val save = findViewById<View>(R.id.save)
-    val extract = findViewById<View>(R.id.extract)
-    val random = findViewById<TextView>(R.id.random)
-    val encrypted = findViewById<TextView>(R.id.encrypted)
 
     save.setOnClickListener { randomPref.set(r.nextInt()) }
 
@@ -49,21 +48,12 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun getKeystoreBackedConcealSharedPreferences(
-      defaultPref: SharedPreferences): ConcealSharedPreferences {
-    return ConcealSharedPreferences(
-        this,
-        defaultPref,
-        NoKeyEncryption(),
-        ConcealEncryption(this, "conceal_encryption",
-            AndroidConceal
-                .get()
-                .createDefaultCrypto(KeystoreBackedKeychain(this, defaultPref))
-        )
-    )
+    defaultPref: SharedPreferences
+  ): ConcealSharedPreferences {
+    val crypto = AndroidConceal.get().createDefaultCrypto(KeystoreBackedKeychain(this, defaultPref))
+    val valueEncryption = ConcealEncryption(this, "conceal_encryption", crypto)
+    return ConcealSharedPreferences(this, defaultPref, NoKeyEncryption(), valueEncryption)
   }
 
-  companion object {
-
-    private val r = Random(50)
-  }
+  private fun getDefaultConcealSharedPreferences() = ConcealSharedPreferences(this)
 }

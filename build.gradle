@@ -1,13 +1,16 @@
 buildscript {
   apply from: rootProject.file('dependencies.gradle')
+
   repositories {
     google()
     jcenter()
   }
+
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.1'
+    classpath 'com.android.tools.build:gradle:3.3.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+    classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:${dokkaVersion}"
   }
 }
 
@@ -16,11 +19,6 @@ allprojects {
     google()
     jcenter()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-  }
-  tasks.withType(Javadoc) {
-    enabled = false
-    options.addStringOption('Xdoclint:none', '-quiet')
-    options.addStringOption('encoding', 'UTF-8')
   }
 }
 
